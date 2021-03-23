@@ -1,16 +1,13 @@
-<!DOCTYPE HTML>
-<html>
-	<head>
-		<meta charset="utf-8" />
-		<title>Kalkulator kredytowy</title>
-	</head>
-	<body>
+{extends file="main.tpl"}
+
+{block name= content}
+
 		<table>
 				<tr>
 					<th>Jesteś zalogowany jako: <?php echo "$role"?></th>
 					<td><a href="logout.php"><button>Wyloguj</button></a></td>
 				</tr>
-		<form action="calc_proc.php" method="post">
+		<form action="app/calc_proc.php" method="post">
 				<tr>
 					<th>Kwota (złotych)</th>
 					<td><input id="id_kwota" type="text" name="kwota"/></td>
@@ -29,5 +26,5 @@
 				</tr>
 		</table>
 		</form>
-	</body>
-</html>
+
+{/block}

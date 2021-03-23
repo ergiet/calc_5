@@ -6,15 +6,21 @@
 	</head>
 	<body>
 		<?php
+			require_once 'libs/Smarty.class.php';
+			require_once dirname(__FILE__)."/config.php";
 			session_start();
+			$_SESSION['role'] = 'admin';
 			$role = isset($_SESSION['role']) ? $_SESSION['role'] : '';
 
 			//sprawdzenie czy wymagane jest logowanie
 			if ( empty($role) ){
-				include 'login.php';
+				include $conf->root_path.'/login/login.php';
 				exit();
 			}
-			include 'calc.php';
+
+			$smarty = new Smarty();
+
+            $smarty -> display('app/calc.tpl');
 		?>
 	</body>
 </html>

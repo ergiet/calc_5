@@ -1,4 +1,6 @@
 <?php
+require_once dirname(__FILE__)."../config.php";
+
 function getParamsLogin(&$form){
 	$form['login'] = isset ($_REQUEST ['login']) ? $_REQUEST ['login'] : null;
 	$form['pass'] = isset ($_REQUEST ['pass']) ? $_REQUEST ['pass'] : null;
@@ -39,9 +41,9 @@ $messages = array();
 getParamsLogin($form);
 
 if (!validateLogin($form,$messages)) {
-	include 'login_view.php';
+	include $conf->root_path.'login/login_view.php';
 	exit();
 }
 
-header("Location: index.php");
+header("Location: ".$conf->root_path."index.php");
 ?>
